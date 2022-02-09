@@ -1,0 +1,9 @@
+export const SET_AUTH = "SET_AUTH";
+export const SET_LOADING = "SET_LOADING";
+export const SET_USER = "SET_USER";
+export const SIGN_OUT = "SIGN_OUT";
+export const CLEAR_AUTH = "CLEAR_AUTH";
+export const SET_USER_POSTS = "SET_USER_POSTS";
+export const SET_BLOG_SUBMIT_STATUS = "SET_BLOG_SUBMIT_STATUS";
+export const SET_BLOG = "SET_BLOG";
+export const RESET = "RESET";

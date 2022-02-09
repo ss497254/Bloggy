@@ -1,0 +1,11 @@
+# dependencies
+/node_modules
+/client/node_modules
+
+# production
+/client/build
+
+# misc
+/config/dev.env
+/config/heroku.env
+/config/test.env
