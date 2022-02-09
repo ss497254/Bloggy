@@ -34,18 +34,30 @@ export const updateUserInfo = (userData) => (dispatch) => {
     });
 };
 
-export const SubmitBlog = (blogData, callback) => (dispatch) => {
+export const SubmitBlog = (blogData, toast, callback) => (dispatch) => {
   console.log(blogData);
   axios
     .post("/blogs", blogData)
     .then((res) => {
-      dispatch(SubmitStatus({ verdict: "Submitted" }));
-      callback(res.data.id);
+      callback(res.data.blog.id);
+      toast({
+        title: "Submitted Succefully",
+        description: "Blog has been submitted successfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     })
     .catch((err) => {
-      dispatch(SubmitStatus({ verdict: "Failed" }));
       console.log("err", err);
       callback(undefined, err);
+      toast({
+        title: "Failed to Submit",
+        description: "Unable to Submit. Please Try Again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     });
 };
 
@@ -61,11 +73,4 @@ export const EditBlog = (blogData, callback) => (dispatch) => {
       console.log("err", err);
       callback(undefined, err);
     });
-};
-
-export const SubmitStatus = (data) => {
-  return {
-    type: actionTypes.SET_BLOG_SUBMIT_STATUS,
-    payload: data,
-  };
 };

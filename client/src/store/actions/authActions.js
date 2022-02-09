@@ -1,7 +1,7 @@
 import axios, { setAuthToken } from "../../API";
 import * as actionTypes from "./types";
 
-export const SignInUser = (userData) => (dispatch) => {
+export const SignInUser = (userData, toast) => (dispatch) => {
   dispatch(setLoading(true));
   axios
     .post("sign-in", userData)
@@ -11,14 +11,27 @@ export const SignInUser = (userData) => (dispatch) => {
       setAuthToken(token);
       dispatch(setUser(user));
       dispatch(setLoading(false));
+      toast({
+        title: "Sign in Succefully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     })
     .catch((err) => {
       console.log("err", err);
       dispatch(setLoading(false));
+      toast({
+        title: "Failed to Sign in",
+        description: "Please Try Again",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     });
 };
 
-export const SignUpUser = (userData) => (dispatch) => {
+export const SignUpUser = (userData, toast) => (dispatch) => {
   dispatch(setLoading(true));
   axios
     .post("/sign-up", userData)
@@ -28,10 +41,23 @@ export const SignUpUser = (userData) => (dispatch) => {
       setAuthToken(token);
       dispatch(setUser(user));
       dispatch(setLoading(false));
+      toast({
+        title: "Sign up Succefully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     })
     .catch((err) => {
       console.log("err", err);
       dispatch(setLoading(false));
+      toast({
+        title: "Failed to Sign up",
+        description: "Please Try Again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     });
 };
 

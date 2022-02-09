@@ -48,7 +48,7 @@ function UserProfileEdit({
         duration: 4000,
         isClosable: true,
       });
-      setTimeout(() => navigate("/sign-in"), 1000);
+      setTimeout(() => navigate("/sign-in", { replace: true }), 1000);
     }
   }, []);
 
@@ -86,7 +86,7 @@ function UserProfileEdit({
         spacing={4}
         w={"full"}
         maxW={"lg"}
-        bg={useColorModeValue("white", "gray.700")}
+        bg={{ lg: useColorModeValue("white", "gray.700"), sm: "inherit" }}
         rounded={"xl"}
         boxShadow={{ lg: "lg", md: "lg", sm: "sm" }}
         p={6}

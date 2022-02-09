@@ -47,7 +47,7 @@ function SignUp({ authenticated, isLoading, SignUpUser }) {
         isClosable: true,
       });
     }
-    SignUpUser({ FirstName, LastName, Email, Password });
+    SignUpUser({ FirstName, LastName, Email, Password }, toast);
   };
 
   return (

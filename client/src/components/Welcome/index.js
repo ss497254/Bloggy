@@ -1,96 +1,102 @@
 import {
   Box,
-  Heading,
-  Container,
-  Text,
   Button,
-  Stack,
+  Container,
+  Heading,
+  Flex,
   Icon,
+  Stack,
+  Text,
   useColorModeValue,
   createIcon,
-  Link,
 } from "@chakra-ui/react";
 
-export default function StartPage() {
+export default function Welcome() {
   return (
     <>
-      <Container
-        maxW={"3xl"}
-        minH="90vh"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
+      <Flex
+        w={"full"}
+        h={"calc(100vh - 60px)"}
+        style={{
+          background: "linear-gradient(#5390D9, #80FFDB)",
+        }}
       >
-        <Stack
-          as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
+        <Container
+          maxW={"3xl"}
+          minH="90vh"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}
-          >
-            MERN stack blog app with <br />
-            <Text
-              as={"span"}
-              color={"green.400"}
-              bgGradient="linear(to-r, #30CFD0 0%, #ce47e7 100%)"
-              bgClip="text"
-            >
-              Chakra UI
-            </Text>
-          </Heading>
-          <Text color={"gray.500"}>
-            That's my first experience with MERN stack and Chakra UI. I had so
-            much fun doing it. <br /> I hope you like it too.
-          </Text>
           <Stack
-            direction={"column"}
-            spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
+            as={Box}
+            textAlign={"center"}
+            spacing={{ base: 8, md: 14 }}
+            py={{ base: 20, md: 36 }}
           >
-            <Button
-              as={Link}
-              href={"/posts"}
-              colorScheme={"green"}
-              bg={"green.500"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "green.600",
-              }}
-              color={"gray.100"}
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+              lineHeight={"110%"}
             >
-              Get Started
-            </Button>
-
-            <Box>
-              <Icon
-                as={Arrow}
-                color={useColorModeValue("gray.800", "gray.300")}
-                w={71}
-                position={"absolute"}
-                right={-71}
-                top={"10px"}
-              />
               <Text
-                fontSize={"lg"}
-                fontFamily={"Caveat"}
-                position={"absolute"}
-                right={"-88px"}
-                top={"-18px"}
-                transform={"rotate(10deg)"}
+                as={"span"}
+                color={"green.400"}
+                bgGradient="linear(to-b, #4d1d63 0%, #ce47e7 100%)"
+                bgClip="text"
               >
-                Let's go!
+                Welcome to Bloggy
+                <br />
               </Text>
-            </Box>
+            </Heading>
+            <Text color={"white"} fontSize="1.5rem">
+              Bloggy is a platform to Publish your Feeling, Ideas to Public
+              <br /> Create a unique and beautiful blog.
+            </Text>
+            <Stack
+              direction={"column"}
+              spacing={3}
+              align={"center"}
+              alignSelf={"center"}
+              position={"relative"}
+            >
+              <Button
+                colorScheme={"green"}
+                bg={"green.500"}
+                rounded={"full"}
+                px={6}
+                _hover={{
+                  bg: "green.600",
+                }}
+                color={"gray.100"}
+              >
+                Get Started
+              </Button>
+
+              <Box>
+                <Icon
+                  as={Arrow}
+                  color={useColorModeValue("gray.800", "gray.300")}
+                  w={71}
+                  position={"absolute"}
+                  right={-71}
+                  top={"10px"}
+                />
+                <Text
+                  fontSize={"lg"}
+                  fontFamily={"Caveat"}
+                  position={"absolute"}
+                  right={"-88px"}
+                  top={"-18px"}
+                  transform={"rotate(10deg)"}
+                >
+                  Let's go!
+                </Text>
+              </Box>
+            </Stack>
           </Stack>
-        </Stack>
-      </Container>
+        </Container>
+      </Flex>
     </>
   );
 }

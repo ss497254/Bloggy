@@ -41,7 +41,7 @@ function SignIn({ authenticated, isLoading, SignInUser }) {
         isClosable: true,
       });
     }
-    SignInUser({ Email, Password });
+    SignInUser({ Email, Password }, toast);
   };
   return (
     <Flex

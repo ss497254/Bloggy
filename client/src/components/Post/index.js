@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ArrowForwardIcon } from "../../assets/Icons";
+import UserIcon from "../../assets/Images/user-icon.png";
 import Card from "../Card/Card";
 
 const PostTags = (props) => {
@@ -36,8 +37,8 @@ export const PostAuthor = (props) => {
       <Image
         borderRadius="full"
         boxSize="40px"
-        src={props.userImage}
-        alt={`Avatar of ${props.name}`}
+        src={props.userImage || UserIcon}
+        fit="cover"
       />
       <Text fontWeight="medium">{props.name}</Text>
       <Text>—</Text>

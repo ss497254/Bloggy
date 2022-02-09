@@ -8,12 +8,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "../../API";
 import Blog from "../../components/Post";
+// import Welcome from "../../components/Welcome";
 import LoadingBlog from "../../components/Loading/LoadingBlog";
 
 const Blogs = () => {
   const toast = useToast();
   const [blogs, setblogs] = useState([]);
   const Topic = useLocation().pathname.split("/")[1];
+  // const FirstVisit = localStorage.getItem("FirstVisit");
 
   useEffect(() => {
     axios
@@ -36,6 +38,7 @@ const Blogs = () => {
 
   return (
     <>
+      {/* {!FirstVisit && <Welcome />} */}
       {blogs.length == 0 ? (
         <LoadingBlog />
       ) : (

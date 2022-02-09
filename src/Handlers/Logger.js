@@ -5,7 +5,7 @@ const formatTime = require("./formatTime");
 
 const logPath = join(__dirname, "..", "..", "App", "log");
 const startTime =
-  new Date().getTime() - (process.env.TIMEDIFF || 0) * 60 * 60 * 1000;
+  new Date().getTime() + (process.env.TIMEDIFF || 0) * 60 * 60 * 1000;
 
 function setup() {
   fs.writeFileSync(logPath, `[{"start":"Hii, I'm logs"}`);
@@ -30,12 +30,12 @@ const addLogs = (event) => {
   const debug = require("debug")(event);
   function adlog(message, save_to_db) {
     let currTime = new Date(
-      new Date().getTime() - (process.env.TIMEDIFF || 0) * 60 * 60 * 1000
+      new Date().getTime() + (process.env.TIMEDIFF || 0) * 60 * 60 * 1000
     );
     const log = {
       message,
       time: formatTime((currTime.getTime() - startTime) / 1000),
-      timestamp: `${currTime.getHours()}:${currTime.getMinutes()}:${currTime.getSeconds()} <--> ${currTime.toLocaleDateString()}:`,
+      timestamp: `${currTime.getHours()}:${currTime.getMinutes()}:${currTime.getSeconds()} <--> ${currTime.toLocaleDateString()}`,
     };
     debug(log);
     append_log(event, log);

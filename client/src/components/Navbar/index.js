@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -30,27 +29,22 @@ import {
 import { logoutUser } from "../../store/actions/authActions";
 
 function Navbar({ authenticated, logoutUser }) {
-  const [a, seta] = useState(true);
   const pathname = useLocation().pathname;
   const navigate = useNavigate();
   const { isOpen, onToggle } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
-  useEffect(() => {
-    if (!a) navigate("/sign-in");
-  }, [a]);
-
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.900")}
+        bg={useColorModeValue("white", "#181818")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        borderColor={useColorModeValue("gray.200", "#181818")}
         align={"center"}
       >
         <Flex
@@ -120,7 +114,7 @@ function Navbar({ authenticated, logoutUser }) {
               onClick={() => {
                 if (pathname === "/profile") {
                   logoutUser();
-                  seta(false);
+                  navigate(-1);
                 }
               }}
             >
@@ -135,7 +129,11 @@ function Navbar({ authenticated, logoutUser }) {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav parentToggle={onToggle} />
+        <MobileNav
+          parentToggle={onToggle}
+          authenticated={authenticated}
+          logoutUser={logoutUser}
+        />
       </Collapse>
     </Box>
   );
@@ -203,7 +201,7 @@ const DesktopSubNav = ({ label, to, subLabel }) => {
       mx={10}
       rounded={"md"}
       _hover={{
-        bg: useColorModeValue("orange.50", "gray.900"),
+        bg: useColorModeValue("orange.50", "#181818"),
       }}
     >
       <Stack direction={"row"} align={"center"}>
@@ -218,7 +216,7 @@ const DesktopSubNav = ({ label, to, subLabel }) => {
           <Text
             fontSize={"sm"}
             _hover={{
-              bg: useColorModeValue("orange.50", "gray.900"),
+              bg: useColorModeValue("orange.50", "#181818"),
             }}
           >
             {subLabel}
@@ -240,12 +238,16 @@ const DesktopSubNav = ({ label, to, subLabel }) => {
   );
 };
 
-const MobileNav = ({ parentToggle }) => {
+const MobileNav = ({ parentToggle, authenticated, logoutUser }) => {
+  const pathname = useLocation().pathname;
+  const navigate = useNavigate();
+
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("white", "#181818")}
       display={{ md: "none" }}
-      borderBottom="0.5px solid #777"
+      borderBottom="0.5px solid"
+      borderBottomColor={useColorModeValue("#aaa", "#555")}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
@@ -256,8 +258,19 @@ const MobileNav = ({ parentToggle }) => {
       ))}
       <MobileNavItem
         key={"Profile"}
-        parentToggle={parentToggle}
-        {...{ to: "/profile", label: "Profile" }}
+        parentToggle={
+          pathname === "/profile"
+            ? () => {
+                logoutUser();
+                navigate("/");
+              }
+            : parentToggle
+        }
+        {...(authenticated
+          ? pathname === "/profile"
+            ? { to: "", label: "Log Out" }
+            : { to: "/profile", label: "Profile" }
+          : { to: "/sign-in", label: "Sign-in" })}
       />
     </Stack>
   );
@@ -278,11 +291,13 @@ const MobileNavItem = ({ label, children, to, parentToggle }) => {
           textDecoration: "none",
         }}
         mt={0}
-        borderTop="0.5px solid #777"
+        borderTop="0.5px solid"
+        borderTopColor={useColorModeValue("#aaa", "#555")}
       >
         <Text
           fontWeight={600}
           m={0}
+          fontSize="1.1rem"
           color={useColorModeValue("gray.600", "gray.200")}
         >
           {label}
@@ -349,7 +364,7 @@ const NAV_ITEMS = [
     to: "/create-blog",
   },
   {
-    label: "About",
+    label: "About Me",
     to: "/about",
   },
   {

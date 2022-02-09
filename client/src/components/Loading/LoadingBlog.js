@@ -3,7 +3,7 @@ import Typed from "react-typed";
 
 export default function LoadingBlog() {
   return (
-    <Flex justify="center" alignItems="center" w="100%" minH="90vh">
+    <Flex justify="center" alignItems="center" w="100%" minH="95vh">
       <VStack>
         <Spinner
           thickness="5px"

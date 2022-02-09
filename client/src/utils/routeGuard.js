@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const RouteGuard = ({ children }) => {
   const Navigate = useNavigate();
-  const authenticated = useSelector((state) => state.auth.authenticated);
+  const isLoggedin = localStorage.getItem("token");
   useEffect(() => {
-    if (!authenticated) {
+    if (!isLoggedin) {
       Navigate("/sign-in");
     }
   }, []);

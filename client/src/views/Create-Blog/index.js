@@ -31,7 +31,7 @@ import { useToast } from "@chakra-ui/react";
 import { SubmitBlog } from "../../store/actions/userActions";
 import "./style.css";
 
-function CreateBlog({ authenticated, SubmitBlog, submitStatus, user }) {
+function CreateBlog({ authenticated, SubmitBlog, user }) {
   const toast = useToast();
   const [ToastShown, setToastShown] = useState(false);
   const [Loading, setLoading] = useState(false);
@@ -56,6 +56,17 @@ function CreateBlog({ authenticated, SubmitBlog, submitStatus, user }) {
       });
   }, []);
 
+  const ClearForm = () => {
+    setBlogHeading("");
+    setSubHeading("");
+    setBannerURL("");
+    setTags([]);
+    setDescription("");
+    setContent("");
+    setBlogHeading("");
+    setBlogHeading("");
+  };
+
   const handleSubmit = () => {
     if (!Loading && authenticated) {
       setLoading(true);
@@ -71,47 +82,14 @@ function CreateBlog({ authenticated, SubmitBlog, submitStatus, user }) {
           AuthorId: user.id,
           CreatedAt: Date.now(),
         },
-        () => {
+        toast,
+        (id, error) => {
           setLoading(false);
+          if (id) ClearForm();
         }
       );
     }
   };
-
-  const ClearForm = () => {
-    setBlogHeading("");
-    setSubHeading("");
-    setBannerURL("");
-    setTags([]);
-    setDescription("");
-    setContent("");
-    setBlogHeading("");
-    setBlogHeading("");
-  };
-
-  useEffect(() => {
-    if (submitStatus.verdict && !ToastShown) {
-      if (submitStatus.verdict == "Submitted") {
-        toast({
-          title: "Submitted Succefully",
-          description: "Blog has been submitted successfully",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-        ClearForm();
-      } else {
-        toast({
-          title: "Failed to Submit",
-          description: "Unable to Submit. Please Try Again.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-      setToastShown(true);
-    }
-  }, [submitStatus]);
 
   return (
     <Box w="full" h="full">
@@ -314,7 +292,6 @@ function CreateBlog({ authenticated, SubmitBlog, submitStatus, user }) {
 const mapStateToProps = (state) => {
   return {
     authenticated: state.auth.authenticated,
-    submitStatus: state.user.submitStatus,
     user: state.auth.user,
   };
 };
