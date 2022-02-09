@@ -143,9 +143,10 @@ function About() {
             textAlign={"start"}
             fontFamily={"body"}
           >
-            I'm a software engineering student, specializing in building web
-            applications. Intrested by Competitive programming and currently
-            looking for a graduate internship opportunity.
+            I'm currently pursuing B.Tech in Computer Science and Engineering at
+            IIT(ISM) Dhanbad, specializing in building web applications.
+            Intrested by Competitive programming and currently looking for a
+            under graduate internship opportunity.
             <br />
             <br />
             <Code animation="infinite" fontSize={"xl"}>
@@ -159,12 +160,15 @@ function About() {
                 loop
               />
             </Code>
+            <br />
+            <br />
+            <Code colorScheme={"orange"}>
+              I loves to transform ideas into reality.
+            </Code>
             <br />I code <Code colorScheme="blue"> simple</Code>
             {" and "}
             <Code colorScheme="green"> useful</Code> things and I{" "}
             <Code colorScheme="red"> love </Code> what I do.
-            {/* <br />
-            <Code colorScheme={"orange"}>gaming 🎮</Code> */}
           </Text>
         </Box>
       </Flex>

@@ -6,6 +6,7 @@
 /client/build
 
 # misc
+/playground.js
 /config/dev.env
 /config/heroku.env
 /config/test.env
