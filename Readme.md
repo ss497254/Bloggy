@@ -7,7 +7,16 @@ Hosted at **https://bloggy-it.herokuapp.com/**
 ## About
 
 Bloggy is a platform to Publish your Feeling, Ideas, Experience to Public.
-You can Create unique and beautiful blogs here.
+You can create and find unique and beautiful blogs here.
+
+## Tech Stack Used
+
+- [MongoDB](https://docs.mongodb.com/) - Document database - to store data as JSON
+- [Express.js](https://devdocs.io/express/) - Back-end web application framework running on top of Node.js
+- [React](https://reactjs.org/docs/) - Front-end web app framework used
+- [Node.js](https://nodejs.org/en/docs/) - JavaScript runtime environment
+
+### Setting up App
 
 ## Env Variables
 
@@ -22,14 +31,8 @@ DB_NAME
 MODE  
 TIMEDIFF (optional)
 
-## Tech Stack Used
-
-- [MongoDB](https://docs.mongodb.com/) - Document database - to store data as JSON
-- [Express.js](https://devdocs.io/express/) - Back-end web application framework running on top of Node.js
-- [React](https://reactjs.org/docs/) - Front-end web app framework used
-- [Node.js](https://nodejs.org/en/docs/) - JavaScript runtime environment
-
-### Setting up App
+**Starting the App**
+You can run Frontend and backend seperately for development.
 
 1. First Install the Dependencies by running command :
 
