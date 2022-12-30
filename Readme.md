@@ -2,7 +2,7 @@
 
 ## View live App
 
-Hosted at **https://bloggy-it.herokuapp.com/**
+Hosted at **https://bloggy-it.herokuapp.com** (sorry unavailable)
 
 ## About
 
@@ -23,6 +23,7 @@ You can create and find unique and beautiful blogs here.
 Make Sure to Create a dev.end file in ./config directory and add appropriate variables in order to use the app.
 
 **Essential Variables**
+
 JWT_SECRET  
 DB_USERNAME  
 DB_PASSWORD  
